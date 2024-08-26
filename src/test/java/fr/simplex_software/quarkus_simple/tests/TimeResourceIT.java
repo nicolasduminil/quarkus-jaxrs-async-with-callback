@@ -41,7 +41,7 @@ public class TimeResourceIT
   {
     try (Client client = ClientBuilder.newClient())
     {
-      client.target(timeSrvUrl).request().async().get(new TimeCallback());
+      client.target(timeSrvUrl).request().async().get(new TimeCallback()).get(10, TimeUnit.SECONDS);
     }
     catch (Exception ex)
     {
